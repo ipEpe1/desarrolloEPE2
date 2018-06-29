@@ -12,6 +12,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StartPageModule } from '../pages/start/start.module';
 import { RegisterPageModule } from '../pages/register/register.module';
+import { AddReservationPageModule } from '../pages/add-reservation/add-reservation.module';
+import { LoginHomePageModule } from '../pages/login-home/login-home.module';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCNyo22PRX-unMdmqIQT2tPaYjexDYwXs0",
@@ -33,6 +35,8 @@ export const firebaseConfig = {
     IonicModule.forRoot(MyApp),
     StartPageModule,
     RegisterPageModule,
+    AddReservationPageModule,
+    LoginHomePageModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule
   ],
