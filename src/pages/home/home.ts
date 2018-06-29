@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { SesionPage } from '../sesion/sesion'
 
 @Component({
   selector: 'page-home',
@@ -11,4 +12,8 @@ export class HomePage {
 
   }
 
+  iniciarSesion() {
+    this.navCtrl.push(SesionPage);
+
+  }
 }
