@@ -8,11 +8,10 @@
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
-
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button block (click)="iniciarSesion()" color="dark">Ver Resumen</button>
+  <h3>Sus horas medicas:</h3>
+  <ion-list>
+    <ion-item *ngFor="let item of horasMedicas | async">
+      {{item.centro}}
+    </ion-item>
+  </ion-list>
 </ion-content>
