@@ -1,9 +1,3 @@
-<!--
-  Generated template for the AddReservationPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -16,7 +10,7 @@
 <ion-content padding>
   <ion-item>
     <ion-label>Centro Medico</ion-label>
-    <ion-select [(ngModel)]="doctor" interface="action-sheet">
+    <ion-select [(ngModel)]="centro" interface="action-sheet">
       <ion-option value="Santiago">Santiago</ion-option>
       <ion-option value="La Florida">La florida</ion-option>
       <ion-option value="Peñalolen">Peñalolen</ion-option>
@@ -42,4 +36,5 @@
     <ion-label>Hora</ion-label>
     <ion-datetime displayFormat="HH:mm" [(ngModel)]="hora" minuteValues="0,15,30,45"></ion-datetime>
   </ion-item>
+  <button ion-button block secondary (click)="generarReserva()">Reservar Hora Medica</button>
 </ion-content>

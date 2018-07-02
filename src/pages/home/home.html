@@ -1,4 +1,3 @@
-    
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
@@ -11,12 +10,27 @@
 <ion-content padding>
   <h3>Sus horas medicas:</h3>
   <ion-list>
-    <ion-item *ngFor="let item of horasMedicas | async">
-      {{item.centro}}
-    </ion-item>
+    <ion-item-sliding *ngFor="let horaMedica of horasMedicas">
+      <ion-item [ngClass]="horaMedica.puntual == false ? 'redClass': 'mainClass'">
+      <ion-avatar item-start *ngIf="horaMedica.puntual == false">
+        <ion-icon name="timer" style="font-size: 30px; color: #ffffff;"></ion-icon>
+      </ion-avatar>
+      <p *ngIf="horaMedica.puntual == false" class="conRetraso">HORA CON RETRASO</p>
+        Dr: {{horaMedica.doctor}}
+        <br> Fecha: {{horaMedica.fecha}} {{horaMedica.hora}}
+        <br> Centro Medico: {{horaMedica.centro}}
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="eliminarReserva(horaMedica)">
+          <ion-icon large name="md-trash"></ion-icon>
+        </button>
+      </ion-item-options>
+      <ion-item-options side="left">
+        <button ion-button color="secondary" (click)="confirmarRetraso(horaMedica)">
+          <ion-icon large name="time"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
-  <button ion-button secondary (click)="registrarHora()">Al formulario</button>
+  <button ion-button secondary block (click)="registrarHora()">Crear Reserva</button>
 </ion-content>
-                                                          
-														      
-															                    

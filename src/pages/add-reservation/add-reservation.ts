@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the AddReservationPage page.
@@ -17,12 +19,33 @@ export class AddReservationPage {
   fecha: string;
   hora: string;
   doctor: string;
-  doctores: any = ['Test Doctor 1', 'Test Doctor 2', 'Test Doctor 3', 'Test Doctor 4', 'Test Doctor 5', 'Test Doctor 6', 'Test Doctor 7'];
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  usuario: string;
+  centro: string;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public angularFirestore: AngularFirestore, public alertCtrl: AlertController) {
+    this.usuario = navParams.get('user');
+    let fechaHoy = new Date();
+    this.fecha = fechaHoy.getDate() + '/' + fechaHoy.getMonth() + '/' + fechaHoy.getFullYear()
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AddReservationPage');
+  generarReserva() {
+    var fecha = this.fecha;
+    var hora = this.hora;
+    var centro = this.centro;
+    var usuario = this.usuario;
+    var doctor = this.doctor;
+    var puntual = true;
+    this.angularFirestore.collection('horasMedicas').add({ fecha, hora, doctor, usuario, centro, puntual }).then(() => {let alert = this.alertCtrl.create({
+      title: 'Exito',
+      message: 'Su reserva fue agendada exitosamente',
+      buttons: [
+        {
+          text: 'Aceptar',
+          handler: () => {
+            this.navCtrl.push(HomePage,{user: usuario});
+           }
+        }]
+    });
+    alert.present();})
   }
-
 }

@@ -15,19 +15,16 @@
 <ion-content padding>
   <form>
     <ion-item>
-      <ion-label floating>Nombre</ion-label>
-      <ion-input [(ngModel)]="user" [ngModelOptions]="{standalone: true}" type="text"></ion-input>
+      <ion-label floating>Rut</ion-label>
+      <ion-input [(ngModel)]="rut" [ngModelOptions]="{standalone: true}" type="text"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label floating>Apellido</ion-label>
+      <ion-label floating>Contraseña</ion-label>
       <ion-input [(ngModel)]="password" [ngModelOptions]="{standalone: true}"></ion-input>
     </ion-item>
     <button ion-button (click)="login()" block>Confirmar</button>
   </form>
-  <button ion-button secondary (click)="openMenu()">Abrir Menu</button>
-  <ion-nav id="nav" #sesion [root]="rootPage"></ion-nav>
-
-  <button ion-button secondary (click)="registrarUsuario()">Al formulario</button>
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <button ion-button secondary block (click)="registrarUsuario()">Registrarse</button>
+  <button ion-button secondary block (click)="fakeLogin(fakeUser)">Fake Login</button>
 
 </ion-content>

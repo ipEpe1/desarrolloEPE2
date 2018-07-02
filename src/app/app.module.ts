@@ -10,7 +10,7 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { StartPageModule } from '../pages/start/start.module';
+import { LoginPageModule } from '../pages/login/login.module';
 import { RegisterPageModule } from '../pages/register/register.module';
 import { AddReservationPageModule } from '../pages/add-reservation/add-reservation.module';
 import { LoginHomePageModule } from '../pages/login-home/login-home.module';
@@ -33,12 +33,12 @@ export const firebaseConfig = {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    StartPageModule,
+    LoginPageModule,
     RegisterPageModule,
     AddReservationPageModule,
     LoginHomePageModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule.enablePersistence()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
